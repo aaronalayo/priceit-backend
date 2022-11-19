@@ -1,0 +1,22 @@
+{
+  "name": "priceit",
+  "version": "1.0.0",
+  "description": "Search Engine that will search for used and new items ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronalayo/priceit.git"
+  },
+  "author": "Aaron&Tariq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronalayo/priceit/issues"
+  },
+  "homepage": "https://github.com/aaronalayo/priceit#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
