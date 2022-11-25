@@ -1,11 +1,24 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "dist"
-  },
-  "lib": ["es2015"]
-}
+    "compilerOptions": {
+      "target": "es6",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "lib": ["es2016", "esnext", "dom"],
+      "outDir": "dist",
+      "strict": true,
+      "strictNullChecks": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "declaration": true,
+    },
+    "ts-node": {
+        // Tell ts-node CLI to install the --loader automatically, explained below
+        "esm": true
+      },
+     
+
+    "include": ["src/index.ts"],
+    "exclude": ["dist, node_modules"]
+  }
