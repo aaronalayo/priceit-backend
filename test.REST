@@ -1,0 +1,8 @@
+GET https://serpapi.com/search.json?engine=google&q=horse
+Content-Type: application/json
+Authorization: Bearer
+
+{
+    "api_key":"ba025f3be05d50230f1ff1ea0dea0d463a55865d3f755d678aaedcd86f17259f"
+}
+    
