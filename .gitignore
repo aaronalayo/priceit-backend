@@ -37,3 +37,6 @@ lerna-debug.log*
 
 # ENV file
 .env
+
+# REST CLIENT TEST FILE
+test.REST

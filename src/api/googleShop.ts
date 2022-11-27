@@ -1,4 +1,4 @@
-import fetch, { Headers } from "node-fetch";
+import fetch from "node-fetch";
 import { Item } from '../types/item'
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -19,10 +19,7 @@ export const getGData = async (searchWord : string ) => {
     try {
     const resultString = JSON.stringify(data)
     const resultJson = JSON.parse(resultString)
-    const resultsList = Object.entries(resultJson)
 
-
-    // console.log(resultJson)
     for (let item of resultJson.shopping_results) {
 
             const product:Item = {
