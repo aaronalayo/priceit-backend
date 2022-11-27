@@ -2,6 +2,7 @@ import express from "express";
 import * as dotenv from 'dotenv';
 import { Express, Request, Response } from 'express';
 import { getData } from './api/facebook.js'
+import { getGData } from './api/googleShop.js'
 
 dotenv.config();
 
@@ -15,6 +16,13 @@ app.get('/', (req: Request, res: Response) => {
   })
   
 });
+
+app.get('/test', (req: Request, res: Response) => {
+  getGData('ergonomic mouse').then(data => {
+    res.json(data)
+  })  
+})
+
 app.post('/search', (req:Request, res: Response) => {
 
 })
