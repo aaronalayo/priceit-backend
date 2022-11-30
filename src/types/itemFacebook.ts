@@ -1,7 +1,11 @@
 import { Image } from './image' 
-export type Item = {
+export type ItemFacebook = {
     id:string,
     title:string,
-    price:string,
+    price:Price,
     image: Image
+  }
+
+  type Price ={
+    text:string
   }

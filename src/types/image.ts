@@ -1,5 +1,5 @@
 export type Image = {
-    height: number,
-    width:number,
+    height: number | undefined,
+    width:number | undefined,
     uri: string
 }
