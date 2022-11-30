@@ -4,6 +4,7 @@ export type ItemFacebook = {
     title:string,
     price:Price,
     image: Image
+    itremRef:string
   }
 
   type Price ={

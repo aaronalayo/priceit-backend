@@ -46,10 +46,12 @@ export const getFacebookData = async (searchWord:string, page:number) => {
     });
     let data: any = {};
     data = await response.json();
+    
     const page_info = data.data.marketplace_search.feed_units.page_info
     console.log("facebook.ts.getFacebookData: page_info", page_info);
     for (const edge of data.data.marketplace_search.feed_units.edges) {
       if (edge.node) {
+        // console.log(edge.node)
         const product: ItemFacebook = {
           id: edge.node.listing.id,
           title: edge.node.listing.marketplace_listing_title,
@@ -59,8 +61,9 @@ export const getFacebookData = async (searchWord:string, page:number) => {
             width: edge.node.listing.primary_listing_photo.image.width,
             uri: edge.node.listing.primary_listing_photo.image.uri,
           },
+          itremRef:edge.node.listing.share_uri
         };
-
+        console.log(itemList)
         itemList.push(product);
         
       }
