@@ -5,6 +5,8 @@ import { Express, Request, Response } from 'express';
 import { getFacebookData } from './api/getFacebookData.js'
 import { getEbayData } from './api/getEbayData.js'
 import { serialize } from "v8";
+import { getGData } from './api/googleShop.js'
+
 dotenv.config();
 
 const app:Express = express();
@@ -23,16 +25,13 @@ app.use(express.json());
 app.get('/', (req: Request, res: Response) => {
 });
 
-// const getAllData = async (searchWord:string, page:number) =>{
-//   let allData:any[] = []
-//     await getFacebookData(searchWord, page).then(data =>{
-//     allData.push(data)
-//   })
-//     await getEbayData(searchWord).then(data => {
-//     allData.push(data)
-//   })
-// }
-let allData:any[]
+app.get('/test', (req: Request, res: Response) => {
+  getGData('ergonomic mouse').then(data => {
+    res.json(data)
+  })  
+})
+
+
 app.get('/api/find', async (req:Request, res: Response) => {
   let searchWord:string = req.query.search as string;
   let page:number = Number(req.query.page as string)
