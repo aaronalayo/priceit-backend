@@ -26,7 +26,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.get('/test', (req: Request, res: Response) => {
-  getGData('ergonomic mouse').then(data => {
+  getGData('mouse').then(data => {
     res.json(data)
   })  
 })
