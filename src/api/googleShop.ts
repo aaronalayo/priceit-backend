@@ -1,41 +1,43 @@
 import fetch from "node-fetch";
-import { Item } from '../types/item'
+import { ItemGoogle } from '../types/itemGoogle'
 import * as dotenv from 'dotenv'
 dotenv.config()
-var itemList: Item[] = []
+var itemList: ItemGoogle[] = []
 
 const secret = process.env.GSECRET;
 
 export const getGData = async (searchWord : string ) => {
-    await fetch(`https://serpapi.com/search.json?tbm=shop&engine=google&q=${searchWord}&api_key=${secret}`, {
+try {
+    const response = await fetch(`https://serpapi.com/search.json?tbm=shop&engine=google&q=${searchWord}&api_key=${secret}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
         }
-    }).then(response =>{
-    return response.json();
-}).then( data =>{ 
+    })
     
-    try {
+    let data: any = {}
+    data = await response.json()
     const resultString = JSON.stringify(data)
     const resultJson = JSON.parse(resultString)
 
     for (let item of resultJson.shopping_results) {
 
-            const product:Item = {
+            const product:ItemGoogle = {
                 id: item.position,
                 title: item.title,
                 price: item.price,
-                image: item.thumbnail
+                image: item.thumbnail,
+                source: item.source,
+                link: item.link
             }
-            console.log(product)
             itemList.push(product)
     }
     return itemList
 
-    } catch (e) {
-        console.log('API OUTPUT ERROR: ' + e)
-    }
+    
 
-})
+} catch (e) {
+    console.log('API OUTPUT ERROR: ' + e)
+}
+return []
 }

@@ -35,7 +35,9 @@ app.get('/test', (req: Request, res: Response) => {
 app.get('/api/find', async (req:Request, res: Response) => {
   let searchWord:string = req.query.search as string;
   let page:number = Number(req.query.page as string)
- 
+  // getGData(searchWord).then(data => {
+  //   res.json(data)
+  // })  
  getFacebookData(searchWord, page).then(data => {
     res.json(data)
  })
