@@ -6,52 +6,48 @@ import { getFacebookData } from './api/getFacebookData.js'
 import { getEbayData } from './api/getEbayData.js'
 import { serialize } from "v8";
 import { getGData } from './api/googleShop.js'
-
+import { config } from './config/config.js'
+import mongoose  from './connectors/db.connect.js';
+import userRoutes from './routes/UserRoute.js'
 dotenv.config();
-
-const app:Express = express();
-// app.use(cors); /* NEW */
-
-
+// mongo db connect
+mongoose
 const allowedOrigins = ['http://localhost:5173'];
+const router:Express = express();
+// router.use(cors); /* NEW */
+router.use(express.json())
+
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
-const port = process.env.PORT;
-app.use(cors(options));
+router.use(cors(options));
 
-app.use(express.json());
-  
-app.get('/', (req: Request, res: Response) => {
+router.get('/', (req: Request, res: Response) => {
 });
 
-app.get('/test', (req: Request, res: Response) => {
-  getGData('ergonomic mouse').then(data => {
-    res.json(data)
-  })  
-})
+//User routes (Allows CRUD on users)
+router.use('/users', userRoutes)
 
-
-app.get('/api/find', async (req:Request, res: Response) => {
+router.get('/api/find', async (req:Request, res: Response) => {
   let searchWord:string = req.query.search as string;
   let page:number = Number(req.query.page as string)
   // getGData(searchWord).then(data => {
   //   res.json(data)
   // })  
- getFacebookData(searchWord, page).then(data => {
+  getFacebookData(searchWord, page).then(data => {
     res.json(data)
- })
+})
 //   getEbayData(searchWord).then(data => {
 //     res.json(data)
 //  })
   
 })
 
-app.listen(port, () => { 
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+router.listen(config.server.port, () => { 
+  console.log(`⚡️[server]: Server is running at http://localhost:${config.server.port}`);
 });
 
-// app.on('uncaughtException', (e)=> {
+// router.on('uncaughtException', (e)=> {
 //   process.exit()
 // })
 
