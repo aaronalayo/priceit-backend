@@ -55,10 +55,16 @@
 
     * [JavaScript](https://www.javascript.com/) - The Langauge used
     * [NodeJS](https://nodejs.org/en/) - The runtime environment used
+    * [ExpressJS](https://expressjs.com/) - The Framework used
     * [TypeScript](https://www.typescriptlang.org/) - The web framework used
     * [ReactJS](https://reactjs.org/) - The library used to build frontend
+    * [MongooseJS](https://mongoosejs.com/) - The ODM used
+    * [Redis](https://redis.io/) - Used for caching searches
+    * [Redis](https://www.mongodb.com/) - Used as DB
+    * [Redis](https://joi.dev/) - Used for user input validation
     * [Visual Studio Code](https://code.visualstudio.com/) - Editor Used
-    * [Markdown Preview](https://code.visualstudio.com/Docs/languages/markdown#_markdown-preview) - Plugin used for Markdown in editor
+
+
 
 
     ## Authors
