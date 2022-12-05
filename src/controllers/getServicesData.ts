@@ -1,6 +1,6 @@
 import e, { Express, Request, Response, Router } from 'express';
 import { getFacebookData } from '../services/facebookService.js';
-import { getEbayData } from '../services/ebayService.js';
+import { getEbayData }  from '../services/ebayService.js';
 import { redisClient } from '../connectors/redis.js';
 
 export const getServicesData = async (req: Request, res: Response) => {
@@ -29,7 +29,7 @@ export const getServicesData = async (req: Request, res: Response) => {
   if(response?.status == 200){
     if(ebayData){
       // return res.status(200).json({facebookData: facebookData, ebayData: ebayData.itemList, offset: ebayData.offset});
-      return res.status(200).json(ebayData)
+      return res.status(200).json({ebayData:ebayData.itemList, facebookData: facebookData, offset:ebayData.offset})
     }
     else {
       res.send("You are not lucky today!")
