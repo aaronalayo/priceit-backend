@@ -11,21 +11,37 @@ dotenv.config();
 const app: Express = express();
 // app.use(cors); /* NEW */
 
+import { serialize } from "v8";
+import { getGData } from './api/googleShop.js'
+import { config } from './config/config.js'
+import mongoose  from './connectors/db.connect.js';
+import userRoutes from './routes/UserRoute.js'
+dotenv.config();
+// mongo db connect
+mongoose
 const allowedOrigins = ['http://localhost:5173'];
+const router:Express = express();
+// router.use(cors); /* NEW */
+router.use(express.json())
+
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
 };
-const port = process.env.PORT;
-app.use(cors(options));
+router.use(cors(options));
 
-app.use(express.json());
-app.use('/api', routes);
-
-app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+router.get('/', (req: Request, res: Response) => {
 });
 
-// app.on('uncaughtException', (e)=> {
+//User routes (Allows CRUD on users)
+router.use('/users', userRoutes)
+
+
+
+router.listen(config.server.port, () => { 
+  console.log(`⚡️[server]: Server is running at http://localhost:${config.server.port}`);
+});
+
+// router.on('uncaughtException', (e)=> {
 //   process.exit()
 // })
 

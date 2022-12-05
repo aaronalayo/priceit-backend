@@ -6,7 +6,7 @@ var itemList: ItemGoogle[] = []
 const secret = process.env.GSECRET;
 export const getGData = async (searchWord : string ) => {
 try {
-    const response = await fetch(`https://serpapi.com/search.json?tbm=shop&engine=google&q=${searchWord}&api_key=${secret}`, {
+    const response = await fetch(`https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&q=${searchWord}&api_key=${secret}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
@@ -14,9 +14,9 @@ try {
     })
     let data: any = {}
     data = await response.json()
-    const resultString = JSON.stringify(data)
-    const resultJson = JSON.parse(resultString)
-    for (let item of resultJson.shopping_results) {
+
+    for (let item of data.shopping_results) {
+
             const product:ItemGoogle = {
                 id: item.position,
                 title: item.title,
@@ -27,9 +27,8 @@ try {
             }
             itemList.push(product)
     }
-    return itemList
 } catch (e) {
     console.log('API OUTPUT ERROR: ' + e)
 }
-return []
+    return itemList
 }
