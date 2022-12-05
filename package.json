@@ -48,6 +48,7 @@
     "mongodb": "^4.12.1",
     "mongoose": "^6.7.5",
     "node-fetch": "^3.3.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "redis": "^4.5.1"
   }
 }
