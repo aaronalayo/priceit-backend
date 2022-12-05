@@ -3,10 +3,11 @@ export type ItemEbay = {
     id:string,
     title:string,
     price:Price,
-    image: Image
+    image: Image,
+    itemRef:string,
   }
 
   type Price = {
-    value:string,
+    value:number,
     currency:string
   }
