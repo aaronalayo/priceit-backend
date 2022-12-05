@@ -1,7 +1,7 @@
 import e, { Express, Request, Response, Router } from 'express';
 import { getFacebookData } from '../services/facebookService.js';
 import { getEbayData } from '../services/ebayService.js';
-import { redisClient } from '../db/redis.js';
+import { redisClient } from '../connectors/redis.js';
 
 export const getServicesData = async (req: Request, res: Response) => {
   let searchWord: string = (req.query.search as string).toLowerCase();
