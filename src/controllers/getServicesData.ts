@@ -1,13 +1,13 @@
-import { Express, Request, Response, Router } from 'express';
+import e, { Express, Request, Response, Router } from 'express';
 import { getFacebookData } from '../services/facebookService.js';
 import { getEbayData } from '../services/ebayService.js';
 import { redisClient } from '../db/redis.js';
 
 export const getServicesData = async (req: Request, res: Response) => {
   let searchWord: string = (req.query.search as string).toLowerCase();
-  let page: number = Number(req.query.page as string);
-  let url: string = req.query.url as string;
-
+  let limit: number = parseInt(req.query.limit as string);
+  let offset: number = parseInt(req.query.offset as string);
+  console.log(req.query)
   // const key = searchWord;
   // getGData(searchWord).then(data => {
   //   res.json(data)
@@ -24,6 +24,22 @@ export const getServicesData = async (req: Request, res: Response) => {
   //     redisClient.setEx(key, 300, JSON.stringify(data));
   //   })
   //   }
-  const data = await getEbayData(searchWord, url);
-  return res.json(data);
+  const {response, ebayData} = await getEbayData(searchWord, limit, offset);
+  const facebookData = await getFacebookData(searchWord)
+  let data:{}[] = [];
+  ebayData?.itemList.forEach(ebayItem =>{
+    data.push(ebayItem)
+  })
+  facebookData.forEach(facebookItem =>{
+    data.push(facebookItem)
+  })
+  if(response?.status == 200){
+    if(ebayData){
+      return res.status(200).json({itemList:data, offset: ebayData.offset});
+    }
+    else {
+      res.send("You are not lucky today!")
+    }
+  }
+  
 };

@@ -2,8 +2,8 @@ import fetch from 'node-fetch';
 import { modifyFacebookRequestBody } from '../utils/modifyFacebookRequestBody.js';
 import { createFacebookItems } from '../utils/createFacebookItems.js';
 
-export const getFacebookData = async (searchWord: string, page: number) => {
-  const newBody = modifyFacebookRequestBody(searchWord, page);
+export const getFacebookData = async (searchWord: string) => {
+  const newBody = modifyFacebookRequestBody(searchWord);
   try {
     const response = await fetch('https://www.facebook.com/api/graphql/', {
       headers: {
