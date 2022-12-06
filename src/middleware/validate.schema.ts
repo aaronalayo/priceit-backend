@@ -1,6 +1,6 @@
 import Joi, { ObjectSchema } from 'joi';
 import { NextFunction, Response, Request } from 'express';
-import { IUser } from '../models/user.model.js'
+import { IUser } from '../models/userModel.js'
 
 export const ValidateSchema = (schema : ObjectSchema) => {
     return async (req: Request, res: Response, next: NextFunction) => {

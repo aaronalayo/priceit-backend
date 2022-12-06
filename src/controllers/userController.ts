@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import mongoose from 'mongoose';
-import User from '../models/user.model.js'
-
+import User from '../models/userModel.js'
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
 

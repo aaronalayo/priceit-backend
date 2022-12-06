@@ -1,10 +1,16 @@
 import Router from 'express';
-import userController from '../controllers/user.controller.js';
+import userController from '../controllers/userController.js';
+import userAccess from '../controllers/userAccessController.js'
 import { Schemas, ValidateSchema } from '../middleware/validate.schema.js' 
 
 const userRouter = Router()
 
-userRouter.post('/signUp', ValidateSchema(Schemas.user.create), userController.create)
+// User Access
+userRouter.post('/login', userAccess.loginOne);
+userRouter.post('/register', ValidateSchema(Schemas.user.create), userAccess.registerOne);
+
+// CRUD
+userRouter.post('/create', ValidateSchema(Schemas.user.create), userController.create)
 userRouter.get('/find/:userId', userController.find)
 userRouter.get('/findAll/', userController.findAll)
 userRouter.patch('/update/:userId', ValidateSchema(Schemas.user.update), userController.update)
