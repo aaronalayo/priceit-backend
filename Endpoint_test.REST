@@ -1,0 +1,77 @@
+
+
+https://serpapi.com/search.json?tbm=shop&engine=google&q=Coffee
+
+###
+
+https://serpapi.com/search.json?q=Gaming+mouse&location=Germany&hl=de&gl=de&google_domain=google.de&api_key=ba025f3be05d50230f1ff1ea0dea0d463a55865d3f755d678aaedcd86f17259f
+
+###
+
+GET http://localhost:8000/api/find/
+
+###
+GET http://localhost:8000/api/health
+
+
+
+# MONGO CRUD
+
+###
+POST http://localhost:8000/api/users/create
+Content-Type: application/json  
+
+{
+    "user_name":"test",
+    "first_name":"test",
+    "last_name":"test",
+    "email":"test1@test.com",
+    "password":"test",
+    "repeat_password":"test"
+}
+
+### 
+GET http://localhost:8000/api/users/find/638de7e1d06389d2df729aa5
+
+###
+GET http://localhost:8000/api/users/findAll
+
+
+###
+PATCH http://localhost:8000/users/update/638de7e1d06389d2df729aa5
+Content-Type: application/json  
+
+{
+    "user_name":"test_updated2",
+    "first_name":"test_updated2",
+    "last_name":"test_updated2",
+    "email":"test_updated2@test.com",
+    "password":"test"
+}
+
+###
+
+DELETE http://localhost:8000/api/users/delete/638f5e6605867a6486a16fff
+
+
+###
+POST http://localhost:8000/api/users/register
+Content-Type: application/json
+
+{
+    "user_name":"register_test_user",
+    "first_name":"register_test_user_first_name",
+    "last_name":"register_test_user_last_name",
+    "email":"register_test_user_email@test.com",
+    "password":"testtest",
+    "repeat_password": "testtest"
+}
+
+###
+POST http://localhost:8000/api/users/login
+Content-Type: application/json
+
+{
+    "user_name" : "test",
+    "password" : "test"
+}
