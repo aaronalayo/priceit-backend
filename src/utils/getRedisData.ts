@@ -21,4 +21,14 @@ const getFacebookRedisData = async (key: string) => {
       return null
     }
   };
-  export {getEbayRedisData, getFacebookRedisData}
+  const getGoogleRedisData = async (key: string) => {
+    let googleData: {} = {};
+    const data: any = await redisClient.get(key);
+    if (data) {
+      googleData = JSON.parse(data);
+      return googleData;
+    } else {
+      return null
+    }
+  };
+  export {getEbayRedisData, getFacebookRedisData, getGoogleRedisData}

@@ -1,0 +1,28 @@
+import fetch from 'node-fetch';
+import * as dotenv from 'dotenv';
+import { createGoogleItems }  from '../utils/createGoogleItems.js'
+dotenv.config();
+
+const secret = process.env.GSECRET;
+export const getGoogleData = async (searchWord: string, start:string) => {
+  try {
+    const response = await fetch(
+      `https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&q=${searchWord}&start=${start}&api_key=${secret}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    let data: any = {};
+    data = await response.json();
+    console.log("createGoogleItems googleData: ", data )
+    const googleData = createGoogleItems(data)
+    // console.log("createGoogleItems googleData: ", googleData )
+    return googleData
+  } catch (e) {
+    console.log('API OUTPUT ERROR: ' + e);
+  }
+  return []
+};

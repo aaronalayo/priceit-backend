@@ -3,8 +3,11 @@ import { Image } from './image';
 export type ItemGoogle = {
     id:string,
     title:string,
-    price:string,
+    price:Price,
     image: Image,
-    link:string,
-    source:string
+    itemRef:string,
 };
+type Price = {
+    value:number,
+    currency:string
+  }
