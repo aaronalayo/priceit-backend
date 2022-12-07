@@ -5,9 +5,11 @@ dotenv.config();
 
 const secret = process.env.GSECRET;
 export const getGoogleData = async (searchWord: string, start:string) => {
+    console.log(searchWord)
+    let url: string = `https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&num=10&q=${searchWord}&start=${start}&api_key=${secret}`
+    console.log(url)
   try {
-    const response = await fetch(
-      `https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&q=${searchWord}&start=${start}&api_key=${secret}`,
+    const response = await fetch(url,
       {
         method: 'GET',
         headers: {
@@ -17,7 +19,7 @@ export const getGoogleData = async (searchWord: string, start:string) => {
     );
     let data: any = {};
     data = await response.json();
-    console.log("createGoogleItems googleData: ", data )
+    // console.log("createGoogleItems googleData: ", data )
     const googleData = createGoogleItems(data)
     // console.log("createGoogleItems googleData: ", googleData )
     return googleData

@@ -11,23 +11,30 @@ export const getServicesData = async (req: Request, res: Response) => {
   let limit: number = parseInt(req.query.limit as string);
   let offset: number = parseInt(req.query.offset as string);
   let start:string = offset.toString();
+
   const key = searchWord;
   const ebayKey = searchWord+`_ebay_${offset}`
   const facebookKey = searchWord+"_facebook"
-  const googleKey = searchWord+"_google"
+  const googleKey = searchWord+`_google_${offset}`
+
   const facebookData: {} | null = await getFacebookRedisData(facebookKey);
   const ebayData:{itemList:ItemEbay[], offset:number} | null = await getEbayRedisData(ebayKey);
   const googleData:{} | null = await getGoogleRedisData(googleKey);
+
   if (facebookData !== null && ebayData !== null && googleData !== null) {
     console.log('Cache hit for', key);
     res.json({ facebookData: facebookData, ebayData: ebayData.itemList, googleData:googleData, offset:ebayData.offset});
   } else {
+
     const facebookData = await getFacebookData(searchWord);
     const { response, ebayData } = await getEbayData(searchWord, limit, offset);
+    console.log("before googgle", searchWord)
     const googleData = await getGoogleData(searchWord, start);
+
     redisClient.setEx(facebookKey, 300, JSON.stringify(facebookData));
     redisClient.setEx(ebayKey, 300, JSON.stringify(ebayData));
     redisClient.setEx(googleKey, 300, JSON.stringify(googleData));
+
     console.log('Cache miss for', key);
 
     // redisClient.setEx(key + 'ebay', 300, JSON.stringify(ebayData?.itemList));
