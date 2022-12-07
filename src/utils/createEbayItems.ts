@@ -3,7 +3,6 @@ import { ItemEbay } from '../types/itemEbay';
 export function createEbayItems(data: any) {
   var itemList: ItemEbay[] = [];
   data.itemSummaries.forEach((item: any) => {
-    console.log('createEbayItems, item:', item.image);
       const ebayItem: ItemEbay = {
         id: item.itemId,
         title: item.title,
