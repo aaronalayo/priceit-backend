@@ -19,7 +19,7 @@ export const getFacebookData = async (searchWord: string) => {
     });
     let data: any = {};
     data = await response.json();
-    let itemList = createFacebookItems(data);
+    const itemList = createFacebookItems(data);
     // console.log("facebook.ts.getFacebookData: itemList", itemList);
     return itemList;
   } catch (e) {

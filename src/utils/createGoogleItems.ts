@@ -1,8 +1,8 @@
-import { ItemGoogle } from '../types/itemGoogle';
+import { Item } from '../types/item';
 export const createGoogleItems = async (data: any) => {
-  var itemList: ItemGoogle[] = [];
-  for (let item of data.shopping_results) {
-    const product: ItemGoogle = {
+  const itemList: Item[] = [];
+  for (const item of data.shopping_results) {
+    const product: Item = {
       id: item.position,
       title: item.title,
       price: {
@@ -10,9 +10,9 @@ export const createGoogleItems = async (data: any) => {
         currency: item.price.charAt(0),
       },
       image: {
-        height:undefined,
-        width:undefined,
-        uri:item.thumbnail
+        height: undefined,
+        width: undefined,
+        uri: item.thumbnail,
       },
       itemRef: item.link,
     };

@@ -1,14 +1,14 @@
-import redis from "redis";
-import dotenv from 'dotenv'
+import redis from 'redis';
+import dotenv from 'dotenv';
 
-dotenv.config()
+dotenv.config();
 export const redisClient = redis.createClient({
-        url: process.env.REDIS_HOST,
-        password: process.env.REDIS_PASSWORD,
-      });
+  url: process.env.REDIS_HOST,
+  password: process.env.REDIS_PASSWORD,
+});
 
 (async () => {
-  redisClient.on('error', (err:any) => {
+  redisClient.on('error', (err: any) => {
     console.log('Redis Client Error', err);
   });
   redisClient.on('ready', () => console.log('Redis is ready'));
@@ -17,4 +17,3 @@ export const redisClient = redis.createClient({
 
   await redisClient.ping();
 })();
-

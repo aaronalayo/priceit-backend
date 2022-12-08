@@ -18,8 +18,11 @@ services:
     container_name: redis
     ports:
       - '6379:6379'
+    expose:
+      - "6379"
     volumes:
       - redis:/data
+    restart: always
 volumes:
   mongo:
   redis:
