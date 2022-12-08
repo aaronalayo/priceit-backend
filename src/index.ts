@@ -9,7 +9,7 @@ dotenv.config();
 const app: Express = express();
 // app.use(cors); /* NEW */
 
-import { getGData } from './api/googleShop.js'
+
 import { config } from './config/config.js'
 import mongoose  from './connectors/db.connect.js';
 
@@ -26,8 +26,6 @@ const options: cors.CorsOptions = {
 };
 app.use(cors(options));
 
-// app.get('/', (req: Request, res: Response) => {
-// });
 app.use(router);
 app.listen(config.server.port, () => { 
   console.log(`⚡️[server]: Server is running at http://localhost:${config.server.port}`);
