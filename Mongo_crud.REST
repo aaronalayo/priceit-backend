@@ -1,0 +1,71 @@
+# MONGO CRUD
+
+
+
+###
+
+POST http://localhost:8000/api/users/signUp
+
+Content-Type: application/json  
+
+
+
+{
+
+    "user_name":"test",
+
+    "first_name":"test",
+
+    "last_name":"test",
+
+    "email":"test@test.com",
+
+    "password":"test",
+
+    "repeat_password":"test"
+
+}
+
+
+
+###
+
+GET http://localhost:8000/users/find/638cfd4077fee5251fc14956
+
+
+
+
+###
+
+GET http://localhost:8003/api/users/findAll
+
+
+
+
+###
+
+PATCH http://localhost:8000/users/update/638cfd4077fee5251fc14956
+
+Content-Type: application/json  
+
+
+
+{
+
+    "user_name":"test_updated2",
+
+    "first_name":"test_updated2",
+
+    "last_name":"test_updated2",
+
+    "email":"test_updated2@test.com",
+
+    "password":"test_updated_pass2"
+
+}
+
+
+
+###
+
+DELETE http://localhost:8000/users/delete/638cfe24686a0a20bbc78edc
