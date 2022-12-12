@@ -6,7 +6,19 @@ The purpose of this project is to help reduce the vast amount of waste generated
 PriceIt is a proof of concept that will is intended to give the user an opportunity to search various online markets (e.g. Ebay, FB Marketplace, Amazon, Google Shop, etc.) for both used and new items. 
 It will also estimate how much the user will save upon going with the used items.
 
-## Program structure / architecture diagrams
+## System Overview Diagrams
+ 
+<details><summary> System Overview</summary>
+
+![Diagram](./docs/System_and_users.png)
+</details>
+
+
+<details><summary>System Architecture Overview</summary>
+
+![Diagram](./docs/priceit_layered_architecture.png)
+
+</details>
 
 ## Getting Started
 
