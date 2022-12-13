@@ -41,6 +41,9 @@ Prerequisites
     $ git clone https://github.com/aaronalayo/priceit-backend.git
     ```
 2. CD into project
+    ```
+    $ cd /priceit-backend
+    ```
 3. Create a .env file inside the root directory
 
     Linux:
@@ -53,7 +56,7 @@ Prerequisites
     $ New-Item .env
     ```
 
-    fill out the .env e.g.
+    fill out the .env:
     
         SERVER_PORT=
         APP_ID=
@@ -63,14 +66,26 @@ Prerequisites
         BASE_URL=
         GSECRET=
 
+        # REDIS
+        REDIS_PASSWORD=
+        REDIS_HOST=
+        REDIS_USERNAME=
+
+        # MONGODB-HOSTED
         MONGO_HOST=
         MONGO_PORT=
         MONGO_USERNAME=
         MONGO_PASSWORD=
 
-        REDIS_PASSWORD=
-        REDIS_HOST=
-        REDIS_USERNAME=
+        # MONGODB-DOCKER - 
+        # If you want to use Docker mongo instead of Hosted mongodb then; 
+        # 1. Outcomment 'MONGODB-HOSTED' above 
+        # Remove 'DOCKER_' if you want to use the docker MONGODB
+        DOCKER_MONGO_HOST=127.0.0.1
+        DOCKER_MONGO_PORT=6000
+        DOCKER_LOCAL_MONGO_PORT=27917
+        DOCKER_MONGO_USERNAME=docker_mongo_user
+        DOCKER_MONGO_PASSWORD=docker_mongo_pass
 
 
 4. Spin up a docker container 
@@ -90,10 +105,6 @@ Prerequisites
 
 Guide on running tests here
 
-## Deployment
-
-Guide on how to deploy (not necessary)
-
 ## Built With
 
 Change below to match our things::::::
@@ -105,8 +116,8 @@ Change below to match our things::::::
 * [ReactJS](https://reactjs.org/) - The library used to build frontend
 * [MongooseJS](https://mongoosejs.com/) - The ODM used
 * [Redis](https://redis.io/) - Used for caching searches
-* [Redis](https://www.mongodb.com/) - Used as DB
-* [Redis](https://joi.dev/) - Used for user input validation
+* [MongoDB](https://www.mongodb.com/) - Used as DB
+* [JOI](https://joi.dev/) - Used for user input validation
 * [Visual Studio Code](https://code.visualstudio.com/) - Editor Used
 
 ## Authors
