@@ -112,7 +112,7 @@ Change below to match our things::::::
 * [JavaScript](https://www.javascript.com/) - The Langauge used
 * [NodeJS](https://nodejs.org/en/) - The runtime environment used
 * [ExpressJS](https://expressjs.com/) - The Framework used
-* [TypeScript](https://www.typescriptlang.org/) - The web framework used
+* [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
 * [ReactJS](https://reactjs.org/) - The library used to build frontend
 * [MongooseJS](https://mongoosejs.com/) - The ODM used
 * [Redis](https://redis.io/) - Used for caching searches
@@ -122,7 +122,7 @@ Change below to match our things::::::
 
 ## Authors
 
-[Aaron](https://github.com/aaronalayo)
+[Aaron ALAYO](https://github.com/aaronalayo)
 
 [Zamanien](https://github.com/Zamanien)
 
