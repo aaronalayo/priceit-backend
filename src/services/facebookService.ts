@@ -2,6 +2,9 @@ import fetch from 'node-fetch';
 import { modifyFacebookRequestBody } from '../utils/modifyFacebookRequestBody.js';
 import { createFacebookItems } from '../utils/createFacebookItems.js';
 
+  /**
+   * Data from Facebook Graph API.
+   */
 export const getFacebookData = async (searchWord: string) => {
   const newBody = modifyFacebookRequestBody(searchWord);
   try {

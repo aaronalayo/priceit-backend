@@ -1,4 +1,7 @@
 import { Item } from '../types/item';
+/**
+ * Returns a list of google shop items.
+ */
 export const createGoogleItems = async (data: any) => {
   const itemList: Item[] = [];
   for (const item of data.shopping_results) {

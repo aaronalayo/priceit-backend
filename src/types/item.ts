@@ -1,17 +1,17 @@
 export type Item = {
-  id: string;
-  title: string;
-  price: Price;
-  image: Image;
-  itemRef: string;
+  id: string
+  title: string
+  price: Price
+  image: Image
+  itemRef: string
 };
 
 type Price = {
-  value: number;
-  currency: string;
+  value: number
+  currency: string
 };
 type Image = {
-  height: number | undefined;
-  width: number | undefined;
-  uri: string | undefined;
+  height: number | undefined
+  width: number | undefined
+  uri: string | undefined
 };

@@ -3,21 +3,29 @@ import mongoose from 'mongoose';
 import User from '../models/user.model.js';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-  const user = new User({
-    _id: new mongoose.Types.ObjectId(),
-    user_name: req.body.user_name,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    password: req.body.password,
-    repeat_password: req.body.repeat_password,
-  });
-
-  return user
-    .save()
-    .then((user) => res.status(201).json({ user }))
-    .catch((error) => res.status(500).json({ error }));
-};
+  
+  const userFound = await User.findOne({email: req.body.email, user_name: req.body.user_name})
+  console.log(userFound)
+  if(userFound){
+    res.status(302).send("User already in the system")
+  } else if(!userFound) {
+    const user = new User({
+      _id: new mongoose.Types.ObjectId(),
+      user_name: req.body.user_name,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password,
+      repeat_password: req.body.repeat_password,
+    });
+  
+    return user
+      .save()
+      .then((user) => res.status(201).send("Success, user created"))
+      .catch((error) => res.status(500).json({ error }));
+  };
+  }
+  
 const find = async (req: Request, res: Response, next: NextFunction) => {
   const userId: string = req.params.userId;
 

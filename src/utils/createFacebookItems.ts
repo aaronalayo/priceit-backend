@@ -1,4 +1,8 @@
 import { Item } from '../types/item';
+
+/**
+ * Returns a list of facebook  items.
+ */
 export function createFacebookItems(data: any) {
   const itemList: Item[] = [];
   for (const edge of data.data.marketplace_search.feed_units.edges) {
