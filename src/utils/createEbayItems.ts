@@ -1,7 +1,6 @@
-import { off } from 'process';
 import { Item } from '../types/item';
 /**
- * Returns a list of ebay  items.
+ * Returns an array of ebay  items.
  */
 export function createEbayItems(data: any) {
   const itemList: Item[] = [];
@@ -15,10 +14,7 @@ export function createEbayItems(data: any) {
           value: parseFloat(item.price.value),
           currency: item.price.currency,
         },
-  
         image: {
-          height: undefined,
-          width: undefined,
           uri: item.image?.imageUrl,
         },
         itemRef: item.itemAffiliateWebUrl,

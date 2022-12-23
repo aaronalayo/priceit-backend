@@ -22,12 +22,13 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
     return user
       .save()
       .then((user) => res.status(201).send("Success, user created"))
-      .catch((error) => res.status(500).json({ error }));
+      .catch((error) => res.status(500).send("There was an internal problem. Try again"));
   };
   }
+
   
 const find = async (req: Request, res: Response, next: NextFunction) => {
-  const userId: string = req.params.userId;
+  const userId: string = req.body.userId;
 
   return User.findById(userId)
     .then((user) => (user ? res.status(200).json({ user }) : res.status(404).json({ message: 'not found' })))

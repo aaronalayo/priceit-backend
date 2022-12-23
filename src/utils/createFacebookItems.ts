@@ -16,8 +16,6 @@ export function createFacebookItems(data: any) {
           currency: edge.node.listing.formatted_price.text.slice(0, 2),
         },
         image: {
-          height: edge.node.listing.primary_listing_photo.image.height,
-          width: edge.node.listing.primary_listing_photo.image.width,
           uri: edge.node.listing.primary_listing_photo.image.uri,
         },
         itemRef: edge.node.listing.share_uri,
@@ -26,5 +24,5 @@ export function createFacebookItems(data: any) {
       itemList.push(product);
     }
   }
-  return itemList;
+  return {itemList: itemList};
 }

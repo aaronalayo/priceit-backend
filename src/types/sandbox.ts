@@ -6,3 +6,11 @@ export type SANDBOX = {
   redirectUri?: string
   baseUrl?: string
 };
+export type PRODUCTION = {
+  clientId: string
+  clientSecret: string
+  env: 'PRODUCTION'
+  devid?: string
+  redirectUri?: string
+  baseUrl?: string
+};

@@ -6,6 +6,7 @@ import { createFacebookItems } from '../utils/createFacebookItems.js';
    * Data from Facebook Graph API.
    */
 export const getFacebookData = async (searchWord: string) => {
+
   const newBody = modifyFacebookRequestBody(searchWord);
   try {
     const response = await fetch('https://www.facebook.com/api/graphql/', {
@@ -24,9 +25,9 @@ export const getFacebookData = async (searchWord: string) => {
     data = await response.json();
     const itemList = createFacebookItems(data);
     // console.log("facebook.ts.getFacebookData: itemList", itemList);
-    return itemList;
+    return  itemList;
   } catch (e) {
     console.log('Error happened', e);
   }
-  return [];
+  return null;
 };
