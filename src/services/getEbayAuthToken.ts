@@ -1,7 +1,7 @@
 import EbayAuthToken from 'ebay-oauth-nodejs-client';
 import * as dotenv from 'dotenv';
 dotenv.config();
-import { SANDBOX } from '../types/sandbox';
+import { SANDBOX, PRODUCTION } from '../types/sandbox';
 
 const sandBox: SANDBOX = {
   clientId: process.env.APP_ID as string,
@@ -11,4 +11,13 @@ const sandBox: SANDBOX = {
   env: 'SANDBOX',
 };
 
-export const ebayAuthToken = new EbayAuthToken(sandBox);
+
+
+const production: PRODUCTION = {
+  clientId: process.env.PROD_APP_ID as string,
+  clientSecret: process.env.PROD_CLIENT_SECRET as string,
+  baseUrl: process.env.PROD_BASE_URL as string,
+  redirectUri: process.env.PROD_REDIRECT_URI as string,
+  env: 'PRODUCTION',
+};
+export const ebayAuthToken = new EbayAuthToken(production);

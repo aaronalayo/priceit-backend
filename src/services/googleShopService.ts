@@ -1,13 +1,16 @@
 import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
+import { Item } from '../types/item';
 import { createGoogleItems } from '../utils/createGoogleItems.js';
 dotenv.config();
 
 const secret = process.env.GSECRET;
-export const getGoogleData = async (searchWord: string, start: string) => {
-  console.log(start);
-  const url = `https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&num=10&q=${searchWord}&start=${start}&api_key=${secret}`;
-  console.log(url);
+/**
+ * Data from Google Shop API.
+ */
+export const getGoogleData = async (searchWord: string, start: number) => {
+  const num: string = '10';
+  const url = `https://serpapi.com/search.json?tbm=shop&location=United+Kingdom&hl=en&gl=uk&google_domain=google.co.uk&q=${searchWord}&start=${start}&api_key=${secret}`;
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -16,13 +19,16 @@ export const getGoogleData = async (searchWord: string, start: string) => {
       },
     });
     let data: any = {};
+    console.log(response)
     data = await response.json();
     // console.log("createGoogleItems googleData: ", data )
-    const googleData = createGoogleItems(data);
-    // console.log("createGoogleItems googleData: ", googleData )
-    return googleData;
+    const itemList = createGoogleItems(data);
+    if (itemList) {
+      // console.log("createGoogleItems googleData: ", googleData )
+      return itemList;
+    }
   } catch (e) {
     console.log('API OUTPUT ERROR: ' + e);
   }
-  return [];
+  return null
 };
