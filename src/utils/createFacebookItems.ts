@@ -24,5 +24,5 @@ export function createFacebookItems(data: any) {
       itemList.push(product);
     }
   }
-  return {itemList: itemList};
+  return { itemList: itemList };
 }

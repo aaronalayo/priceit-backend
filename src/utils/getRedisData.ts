@@ -6,11 +6,8 @@ export const getRedisData = async (key: string) => {
   const data: any = await redisClient.get(key);
   if (data) {
     serviceData = JSON.parse(data);
-
-
     return serviceData;
   } else {
     return null;
   }
 };
-
