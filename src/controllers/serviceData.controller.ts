@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { getFacebookData } from '../services/facebookService.js';
 import { getEbayData } from '../services/ebayService.js';
-// import { getGoogleData } from '../services/googleShopService.js';
+import { getGoogleData } from '../services/googleShopService.js';
 import { redisClient } from '../connectors/redis.js';
 import { getRedisData } from '../utils/getRedisData.js';
 import { Item } from '../types/item.js';
@@ -13,7 +13,7 @@ export const getServicesData = async (req: Request, res: Response) => {
   const limit: number = parseInt(req.query.limit as string);
   const offset: number = parseInt(req.query.offset as string);
 
-  // const start : number = offset;
+  const start : number = offset;
   const searchWordSchema = Joi.string().min(3).max(30).required();
   const { error } = searchWordSchema.validate(searchWord);
   if (error) {
@@ -26,12 +26,12 @@ export const getServicesData = async (req: Request, res: Response) => {
 
     const facebookRedisData: { itemList?: Item[] } | null = await getRedisData(facebookKey);
     const ebayRedisData: { itemList?: Item[]; offset?: number } | null = await getRedisData(ebayKey);
-    // const googleRedisData: { itemList?: Item[] } | null = await getRedisData(googleKey);
+    const googleRedisData: { itemList?: Item[] } | null = await getRedisData(googleKey);
 
     let facebookData: { itemList?: Item[] } | null;
     let ebayData: { itemList?: Item[]; offset?: number } | null;
-    // let googleData: { itemList?: Item[] } | null;
-    let response: string;
+    let googleData: { itemList?: Item[] } | null;
+
     if (facebookRedisData !== null) {
       facebookData = facebookRedisData;
       console.log('Cache stored for', facebookKey);
@@ -39,11 +39,9 @@ export const getServicesData = async (req: Request, res: Response) => {
       facebookData = await getFacebookData(searchWord);
       if (facebookData) {
         redisClient.set(facebookKey, JSON.stringify(facebookData), {
-          EX: 10 * 60,
+          EX: 5 * 60,
         });
         console.log('Cache stored for', facebookKey);
-      } else {
-        response = 'There was a problem with Facebook server';
       }
     }
     if (ebayRedisData !== null) {
@@ -53,20 +51,18 @@ export const getServicesData = async (req: Request, res: Response) => {
       ebayData = await getEbayData(searchWord, limit, offset);
       if (ebayData) {
         redisClient.set(ebayKey, JSON.stringify(ebayData), {
-          EX: 10 * 60,
+          EX: 5 * 60,
         });
         console.log('Cache stored for', ebayKey);
-      } else {
-        response = 'There was a problem with Facebook server';
-      }
+      } 
     }
     // if (googleRedisData !== null) {
     //   googleData = googleRedisData
     //   console.log('Cache hit for', googleKey);
     // } else {
-    //   googleData = await getGoogleData(searchWord, start);
+    //  googleData = await getGoogleData(searchWord, start);
     //   redisClient.set(googleKey,JSON.stringify(googleData),{
-    //    EX: 10 * 60,
+    //    EX: 5 * 60,
     // });
     //   console.log('Cache miss for', googleKey);
     // }
