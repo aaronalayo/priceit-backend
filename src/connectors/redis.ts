@@ -1,10 +1,14 @@
 import redis from 'redis';
 import dotenv from 'dotenv';
+import { config } from '../config/config.js';
 
 dotenv.config();
 export const redisClient = redis.createClient({
-  url: process.env.REDIS_HOST,
-  password: process.env.REDIS_PASSWORD,
+  socket: {
+    host: config.redis.host,
+    port: config.redis.port
+  },
+  password: config.redis.password
 });
 
 (async () => {
