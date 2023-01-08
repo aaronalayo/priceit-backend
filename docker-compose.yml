@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
   price_it_app:
@@ -18,7 +18,6 @@ services:
     volumes:
       - .:/usr/src/price_it_app
       - /usr/src/app/node_modules
-
   # Uncomment mongo below if you want to use docker container instead of hosted MongoDB
 
   # mongo:

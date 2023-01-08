@@ -1,6 +1,19 @@
 # MONGO CRUD
 
+GET https://price-it-backend.herokuapp.com/api/products/find?search=meme&limit=20&offset=0
 
+
+###
+
+GET 75.119.139.228:8003/api/products/find?search=meme&limit=20&offset=0
+
+####
+
+GET http://priceit-backend.zamanien.com/api/products/find?search=meme&limit=20&offset=0
+
+####
+
+GET http://localhost:8000/api/products/find?search=meme&limit=20&offset=0
 
 ###
 
