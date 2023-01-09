@@ -4,6 +4,7 @@
   "description": "Search engine for used and new products",
   "main": "index.js",
   "scripts": {
+    "build":"npm i",
     "start": "nodemon src/index.ts"
   },
   "pkg": {
