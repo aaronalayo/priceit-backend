@@ -7,7 +7,7 @@
     "dev": "nodemon src/index.ts",
     "build": "npm run lint && rimraf dist/ && tsc",
     "start": "npm run build && node --loader ts-node/esm dist/index.js",
-    "test": "jest --config=./jest.config.ts --rootDir=./src/",
+    "test": "jest --config=./jest.config.ts --rootDir=./src/"
   },
   "pkg": {
     "scripts": [
