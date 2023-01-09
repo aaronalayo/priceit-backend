@@ -4,8 +4,11 @@
   "description": "Search engine for used and new products",
   "main": "index.js",
   "scripts": {
-    "build":"npm i",
-    "start": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "build": "npm run lint && rimraf dist/ && tsc",
+    "start": "npm run build && node --loader ts-node/esm dist/index.js",
+    "test": "jest --config=./jest.config.ts --rootDir=./src/",
+    "lint": "eslint src/**/*.ts"
   },
   "pkg": {
     "scripts": [
@@ -34,7 +37,10 @@
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.9",
     "@types/selenium-webdriver": "^4.1.10",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
     "babel-jest": "^29.3.1",
+    "eslint": "^8.30.0",
     "jest": "^29.3.1",
     "prettier": "^2.8.0",
     "rimraf": "^3.0.2",
