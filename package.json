@@ -4,10 +4,7 @@
   "description": "Search engine for used and new products",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build": "npm run rimraf dist/ && tsc",
-    "start": "npm run build && node --loader ts-node/esm dist/index.js",
-    "test": "jest --config=./jest.config.ts --rootDir=./src/"
+    "start": "nodemon src/index.ts"
   },
   "pkg": {
     "scripts": [
