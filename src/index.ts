@@ -26,7 +26,7 @@ app.use(cors(options));
 
 app.use(router);
 app.listen(config.server.local_port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${config.server.local_port}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${config.server.local_port} | Docker PORT: ${config.server.docker_port}`);
 });
 
 // router.on('uncaughtException', (e)=> {
