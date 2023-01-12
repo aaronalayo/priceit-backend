@@ -8,7 +8,7 @@ services:
     build: .
     restart: unless-stopped
     env_file: ./.env
-    ports:
+    ports:  
       - ${DOCKER_SERVER_PORT}:${LOCAL_SERVER_PORT}
     environment:
       DOCKER_SERVER_PORT: ${DOCKER_SERVER_PORT}
@@ -36,17 +36,17 @@ services:
   #   ports:
   #     - ${DOCKER_MONGO_PORT}:${LOCAL_MONGO_PORT}
 
-  redis:
-    image: redis:latest
-    container_name: redis
-    ports:
-      - '6379:6379'
-    expose:
-      - "6379"
-    volumes:
-      - redis:/data/redis
-    restart: unless-stopped
+  # redis:
+  #   image: redis:latest
+  #   container_name: redis
+  #   ports:
+  #     - '6379:6379'
+  #   expose:
+  #     - "6379"
+  #   volumes:
+  #     - redis:/data/redis
+  #   restart: unless-stopped
 
-volumes:
-  mongo:
-  redis:
+# volumes:
+#   mongo:
+#   redis:
