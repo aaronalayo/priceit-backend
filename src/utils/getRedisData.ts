@@ -1,4 +1,4 @@
-import { redisClient } from '../connectors/redis.js';
+import redisClient from '../connectors/redis.js';
 import { Item } from '../types/item.js';
 
 export const getRedisData = async (key: string) => {
