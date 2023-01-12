@@ -13,9 +13,8 @@ const REDIS_PORT = process.env.REDIS_PORT as unknown as number;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD as string;
 const REDIS_URL = process.env.REDIS_URL as string;
 
-
-const PORT = process.env.PORT as unknown as number || 8080;
-// const DOCKER_SERVER_PORT = process.env.DOCKER_SERVER_PORT ? Number(process.env.DOCKER_SERVER_PORT) : 8083;
+const DOCKER_SERVER_PORT = process.env.DOCKER_SERVER_PORT as unknown as number || 8090;
+const PORT = process.env.PORT as unknown as number || 8080
 
 export const config = {
   mongo: {
@@ -31,7 +30,4 @@ export const config = {
     password: REDIS_PASSWORD,
     url: REDIS_URL
   }
-  // docker_server: {
-  //   docker_port: DOCKER_SERVER_PORT
-  // }
 };
