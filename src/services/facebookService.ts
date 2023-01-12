@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import { modifyFacebookRequestBody } from '../utils/modifyFacebookRequestBody.js';
 import { createFacebookItems } from '../utils/createFacebookItems.js';
+import { Item } from '../types/item.js';
 
 /**
  * Data from Facebook Graph API.
@@ -20,12 +21,23 @@ export const getFacebookData = async (searchWord: string) => {
       body: newBody,
       method: 'POST',
     });
-    console.log(response);
+    // console.log(response);
     let data: unknown = {};
-    data = await response.json();
-    const itemList = createFacebookItems(data);
-    // console.log("facebook.ts.getFacebookData: itemList", itemList);
-    return itemList;
+    if (response.status === 200) {
+      data = await response.json();
+      const facebookData:{
+        itemList: Item[];
+        error?: undefined;
+    } | {
+        error: string;
+        itemList?: undefined;
+    } | undefined = createFacebookItems(data);
+      console.log("facebook itemList", facebookData?.itemList)
+      console.log("facebook error", facebookData?.error)
+      return facebookData;
+    } else {
+      console.log(response.statusText);
+    }
   } catch (e) {
     console.log('Error happened', e);
   }

@@ -1,8 +1,7 @@
 // import { Builder, By, Key, until, WebDriver } from 'selenium-webdriver'
-
 import { Builder, By, Key, WebDriver } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
-import chromeDriver from "chromedriver";
+
 // import * as chrome from 'selenium-webdriver/chrome'
 
 const service = new chrome.ServiceBuilder('/usr/bin/chromedriver');
