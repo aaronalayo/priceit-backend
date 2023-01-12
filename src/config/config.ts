@@ -13,7 +13,7 @@ const REDIS_PORT = process.env.REDIS_PORT as unknown as number;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD as string;
 const REDIS_URL = process.env.REDIS_URL as string;
 
-const DOCKER_SERVER_PORT = process.env.DOCKER_SERVER_PORT as unknown as number;
+
 const PORT = process.env.PORT as unknown as number || 8080;
 // const DOCKER_SERVER_PORT = process.env.DOCKER_SERVER_PORT ? Number(process.env.DOCKER_SERVER_PORT) : 8083;
 
