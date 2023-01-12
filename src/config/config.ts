@@ -13,7 +13,7 @@ const REDIS_PORT = process.env.REDIS_PORT as unknown as number;
 const REDIS_PASSWORD = process.env.REDIS_PASSWORD
 const REDIS_URL = process.env.REDIS_URL
 
-const SERVER_PORT = process.env.LOCAL_SERVER_PORT ? Number(process.env.LOCAL_SERVER_PORT) : 8080;
+const PORT = process.env.PORT as unknown as number || 8080;
 // const DOCKER_SERVER_PORT = process.env.DOCKER_SERVER_PORT ? Number(process.env.DOCKER_SERVER_PORT) : 8083;
 
 export const config = {
@@ -21,7 +21,7 @@ export const config = {
     url: MONGO_URL,
   },
   server: {
-    local_port: SERVER_PORT,
+    local_port: PORT,
   },
   redis: {
     host: REDIS_HOST,
