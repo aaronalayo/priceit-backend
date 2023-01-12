@@ -21,9 +21,8 @@ export const getEbayData = async (searchWord: string, limit: number, offset: num
     // console.log(response);
     if (response.status === 200) {
       data = await response.json();
-      // console.log(data)
-      const { itemList, offset } = createEbayItems(data);
-      return { itemList, offset };
+      const { itemList, offset, error } = createEbayItems(data);
+      return { itemList, offset, error };
     } else {
       console.log(response.statusText);
     }

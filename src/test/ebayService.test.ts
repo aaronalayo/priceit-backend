@@ -9,12 +9,15 @@ describe("Data from Ebay Browser API", ()=>{
         expect(data?.itemList).toBeDefined()
         expect(Array.isArray(data?.itemList)).toBe(true)
         expect(data?.itemList?.length).toBe(10)
-        data?.itemList?.map((item, index) =>{
-            const { ...remaining} = data.itemList[index]
-            expect(item).toMatchObject({
-                ...remaining,
-                title: expect.stringMatching(/samsung/i)
+        if(!data?.error){
+            data?.itemList?.map((item, index) =>{
+                const { ...remaining} = data.itemList?[index]
+                expect(item).toMatchObject({
+                    ...remaining,
+                    title: expect.stringMatching(/samsung/i)
+                })
             })
-        })
+        }
+        
     })
 })

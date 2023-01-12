@@ -24,6 +24,6 @@ export function createEbayItems(data: any) {
     });
     return { itemList: itemList, offset: offset };
   } else {
-    return { itemList: [], offset: offset };
+    return { error:"Nothing found on Ebay..." };
   }
 }

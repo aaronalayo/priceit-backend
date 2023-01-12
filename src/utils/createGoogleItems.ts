@@ -24,6 +24,7 @@ export const createGoogleItems = async (data: any) => {
     }
     return {itemList: itemList};
   } catch (error) {
+    return {error: "Not found on Google..."}
     console.log(error)
   }
  return null
