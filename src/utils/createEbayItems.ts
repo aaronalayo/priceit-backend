@@ -5,7 +5,7 @@ import { Item } from '../types/item';
 export function createEbayItems(data: any) {
   const itemList: Item[] = [];
   const offset: number = data.offset;
-  if(data.itemSummaries){
+  if (data.itemSummaries) {
     data.itemSummaries.forEach((item: any) => {
       const ebayItem: Item = {
         id: item.itemId,
@@ -19,14 +19,11 @@ export function createEbayItems(data: any) {
         },
         itemRef: item.itemAffiliateWebUrl,
       };
-  
+
       itemList.push(ebayItem);
     });
-    
     return { itemList: itemList, offset: offset };
-  }else{
-    return { itemList:[], offset:offset}
+  } else {
+    return { itemList: [], offset: offset };
   }
-  
-
 }

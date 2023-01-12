@@ -1,4 +1,3 @@
-
 import _ from 'lodash';
 import { Item } from '../types/item';
 export const compareData = async (a: {itemList?:Item[]} | null, b: {itemList?:Item[]} | null) => {

@@ -3,12 +3,11 @@ import mongoose from 'mongoose';
 import User from '../models/user.model.js';
 
 const create = async (req: Request, res: Response, next: NextFunction) => {
-  
-  const userFound = await User.findOne({email: req.body.email, user_name: req.body.user_name})
-  console.log(userFound)
-  if(userFound){
-    res.status(302).send("User already in the system")
-  } else if(!userFound) {
+  const userFound = await User.findOne({ email: req.body.email, user_name: req.body.user_name });
+  console.log(userFound);
+  if (userFound) {
+    res.status(302).send('User already in the system');
+  } else if (!userFound) {
     const user = new User({
       _id: new mongoose.Types.ObjectId(),
       user_name: req.body.user_name,
@@ -18,16 +17,13 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
       password: req.body.password,
       repeat_password: req.body.repeat_password,
     });
-  
     return user
       .save()
-      .then((user) => res.status(201).send("Success, user created"))
-      .catch((error) => res.status(500).send("There was an internal problem. Try again"));
-  };
+      .then((user) => res.status(201).send('Success, user created'))
+      .catch((error) => res.status(500).send('There was an internal problem. Try again'));
   }
-
-  
-const find = async (req: Request, res: Response, next: NextFunction) => {
+};
+const find = async (req: Request, res: Response) => {
   const userId: string = req.body.userId;
 
   return User.findById(userId)
@@ -35,12 +31,12 @@ const find = async (req: Request, res: Response, next: NextFunction) => {
     .catch((error) => res.status(500).json({ error }));
 };
 
-const findAll = async (req: Request, res: Response, next: NextFunction) => {
+const findAll = async (req: Request, res: Response) => {
   return User.find()
     .then((users) => res.status(200).json({ users }))
     .catch((error) => res.status(500).json({ error }));
 };
-const update = async (req: Request, res: Response, next: NextFunction) => {
+const update = async (req: Request, res: Response) => {
   const userId: string = req.params.userId;
 
   return User.findById(userId)
