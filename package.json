@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "npm run lint && rimraf dist/ && tsc",
-    "start":"ts-node ./src/index.ts",
+    "start": "ts-node ./src/index.ts",
     "test": "jest --config=./jest.config.ts --rootDir=./src/",
     "lint": "eslint src/**/*.ts"
   },
