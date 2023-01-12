@@ -11,10 +11,10 @@ describe("Data from Ebay Browser API", ()=>{
         expect(data?.itemList?.length).toBe(10)
         if(!data?.error){
             data?.itemList?.map((item, index) =>{
-                const { ...remaining} = data.itemList?[index]
+                const { ...remaining} = data.itemList
                 expect(item).toMatchObject({
                     ...remaining,
-                    title: expect.stringMatching(/samsung/i)
+                    title: expect.stringMatching('/samsung/')
                 })
             })
         }

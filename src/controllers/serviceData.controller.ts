@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { getFacebookData } from '../services/facebookService.js';
 import { getEbayData } from '../services/ebayService.js';
 import { getGoogleData } from '../services/googleShopService.js';
-import { redisClient } from '../connectors/redis.js';
+import  redisClient  from '../connectors/redis.js';
 import { getRedisData } from '../utils/getRedisData.js';
 import { Item } from '../types/item.js';
 // import { compareData } from '../utils/compareData.js';
