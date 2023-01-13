@@ -1,52 +1,48 @@
 version: '3.8'
 
 services:
-
   price_it_app:
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - mongo
+      - redis
     build: .
     restart: unless-stopped
     env_file: ./.env
     ports:  
       - ${DOCKER_SERVER_PORT}:${LOCAL_SERVER_PORT}
-    environment:
-      DOCKER_SERVER_PORT: ${DOCKER_SERVER_PORT}
-      MONGO_HOST: ${MONGO_HOST}
-      MONGO_PORT: ${MONGO_PORT}
-      MONGO_USERNAME: ${MONGO_USERNAME}
-      MONGO_PASSWORD: ${MONGO_PASSWORD}
     volumes:
       - .:/usr/src/price_it_app
       - /usr/src/app/node_modules
+    links:
+      - redis 
 
-  # Uncomment mongo below if you want to use docker container instead of hosted MongoDB
+  mongo:
+    image: mongo
+    container_name: mongo
+    environment:
+      MONGO_HOST: ${MONGO_HOST}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    env_file:
+      - ./.env
+    volumes:
+      - mongo:/data/mongo
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
 
-  # mongo:
-  #   image: mongo:latest
-  #   container_name: mongo
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-  #     # MONGO_INITDB_DATABASE: ${MONGO_DATABASE_NAME}
-  #   env_file:
-  #     - ./.env
-  #   volumes:
-  #     - mongo:/data/mongo
-  #   ports:
-  #     - ${DOCKER_MONGO_PORT}:${LOCAL_MONGO_PORT}
+  redis:
+    image: redis
+    container_name: redis
+    command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
+    env_file: ./.env
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    volumes:
+      - redis:/data/redis
+    restart: unless-stopped
 
-  # redis:
-  #   image: redis:latest
-  #   container_name: redis
-  #   ports:
-  #     - '6379:6379'
-  #   expose:
-  #     - "6379"
-  #   volumes:
-  #     - redis:/data/redis
-  #   restart: unless-stopped
 
-# volumes:
-#   mongo:
-#   redis:
+volumes:
+  mongo:
+  redis:
+
