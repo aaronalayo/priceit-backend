@@ -20,7 +20,6 @@ services:
     image: mongo
     container_name: mongo
     environment:
-      MONGO_HOST: ${MONGO_HOST}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     env_file:
