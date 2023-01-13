@@ -3,18 +3,13 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { Express, Request, Response } from 'express';
 import { router } from './routes/routes.js';
-
+import { config } from './config/config.js';
+import mongoose from './connectors/db.connect.js';
 dotenv.config();
 
 const app: Express = express();
 // app.use(cors); /* NEW */
 
-import { config } from './config/config.js';
-import mongoose from './connectors/db.connect.js';
-
-dotenv.config();
-// mongo db connect
-mongoose;
 const allowedOrigins = ['http://localhost:5173'];
 
 app.use(express.json());
@@ -27,6 +22,7 @@ app.use(cors(options));
 app.use(router);
 app.listen(config.server.local_port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${config.server.local_port} | Docker PORT: ${config.server.docker_port}`);
+  mongoose;
 });
 
 // router.on('uncaughtException', (e)=> {
