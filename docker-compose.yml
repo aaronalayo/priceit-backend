@@ -8,7 +8,7 @@ services:
     build: .
     restart: unless-stopped
     env_file: ./.env
-    ports:  
+    ports:
       - 8080:8080 # Hardcoded ports - CI doesn't won't accept env vars as port
     volumes:
       - .:/usr/src/price_it_app
