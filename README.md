@@ -1,10 +1,9 @@
 # PriceIt
 
 PriceIt is a school project. 
-The purpose of this project is to help reduce the vast amount of waste generated as the result of the online consumer market. 
+The purpose of this project is upcycling. Specifically, to help reduce the vast amount of waste generated as the result of the ever growing online consumer market. 
 
-PriceIt is a proof of concept that will is intended to give the user an opportunity to search various online markets (e.g. Ebay, FB Marketplace, Amazon, Google Shop, etc.) for both used and new items. 
-It will also estimate how much the user will save upon going with the used items.
+PriceIt is a PoC that aims to give the user an opportunity to search various online markets (e.g. Ebay, FB Marketplace, Amazon, Google Shop, etc.) for both used and new items.
 
 ## System Overview Diagrams
  
@@ -20,112 +19,135 @@ It will also estimate how much the user will save upon going with the used items
 
 </details>
 
+### Built With
+
+This project is built with the following tools
+
+* [![NodeJs][NodeJs-logo]][NodeJs-url]
+* [![Express][Express-logo]][Express-url]
+* [![Typescript][Typescript-logo]][Typescript-url]
+* [![MongoDB][MongoDB-logo]][MongoDB-url]
+* [![RedisDB][Redis-logo]][Redis-url]
+
+
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+This Guide will get you a copy of the project up and running on your local machine for development and testing purposes.
+Remember to have the following projects configured as well:
+* [![PriceIt-frontend][PriceIt-frontend-logo]][PriceIt-frontend-url]
+* [![PriceIt-search][PriceIt-search-logo]][PriceIt-search-url]
 
 ### Prerequisites
 
 What things you need to install the software and how to install them in a list form.
 
 * Docker
-* Internet Connection
-
+* Frontend + AUTH API configured
+* API keys to:
+    * SerpApi
+    * eBay Api
+    * Facebook Marketplace API
 
 ### Installation
-
-Prerequisites
+<details><summary> Installation Guide</summary>
 
 1. Clone the repo
-    ```
+    ``` sh
     $ git clone https://github.com/aaronalayo/priceit-backend.git
     ```
-2. CD into project
-    ```
-    $ cd /priceit-backend
-    ```
-3. Create a .env file inside the root directory
+2. CD into project & create an '.env' file as following:
+    ``` 
+    NODE_ENV=
+    LOCAL_SERVER_PORT=
+    DOCKER_SERVER_PORT=
 
-    Linux:
-    ```
-    $ vim .env
-    ```
+    APP_ID=
+    CLIENT_SECRET=
+    DEV_ID=
 
-    Windows:
-    ```
-    $ New-Item .env
-    ```
+    BASE_URL=
+    GSECRET=
 
-    fill out the .env:
-    
-        SERVER_PORT=
-        APP_ID=
-        CLIENT_SECRET=
-        DEV_ID=
-        REDIRECT_URI=
-        BASE_URL=
-        GSECRET=
+    REDIS_PASSWORD=
+    REDIS_HOST=
+    REDIS_PORT=
+    REDIS_URL=
 
-        # REDIS
-        REDIS_PASSWORD=
-        REDIS_HOST=
-        REDIS_USERNAME=
-
-        # MONGODB-HOSTED
-        MONGO_HOST=
-        MONGO_PORT=
-        MONGO_USERNAME=
-        MONGO_PASSWORD=
-
-        # MONGODB-DOCKER - 
-        # If you want to use Docker mongo instead of Hosted mongodb then; 
-        # 1. Outcomment 'MONGODB-HOSTED' above 
-        # Remove 'DOCKER_' if you want to use the docker MONGODB
-        DOCKER_MONGO_HOST=127.0.0.1
-        DOCKER_MONGO_PORT=6000
-        DOCKER_LOCAL_MONGO_PORT=27917
-        DOCKER_MONGO_USERNAME=docker_mongo_user
-        DOCKER_MONGO_PASSWORD=docker_mongo_pass
-
+    DOCKER_MONGO_HOST=
+    DOCKER_MONGO_PORT=
+    DOCKER_MONGO_USERNAME=
+    DOCKER_MONGO_PASSWORD=
+    MONGO_DATABASE_NAME=
 
 4. Spin up a docker container 
 
-
-    Linux:
-    ```
-    $ sudo docker-compose up -d
-    ```
-
-    Windows:
     ```
     $ docker-compose up -d
     ```
+</details>
+
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
 ## Running the tests
 
 Guide on running tests here
 
-## Built With
+## Usage
+<details><summary> Usage Examples</summary>
+[Coming soon]
+</details>
 
-Change below to match our things::::::
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
-* [JavaScript](https://www.javascript.com/) - The Langauge used
-* [NodeJS](https://nodejs.org/en/) - The runtime environment used
-* [ExpressJS](https://expressjs.com/) - The Framework used
-* [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
-* [ReactJS](https://reactjs.org/) - The library used to build frontend
-* [MongooseJS](https://mongoosejs.com/) - The ODM used
-* [Redis](https://redis.io/) - Used for caching searches
-* [MongoDB](https://www.mongodb.com/) - Used as DB
-* [JOI](https://joi.dev/) - Used for user input validation
-* [Visual Studio Code](https://code.visualstudio.com/) - Editor Used
 
-## Authors
+## Project Services / Repositories
 
-[Aaron ALAYO](https://github.com/aaronalayo)
+Project Links:
+- [![PriceIt-frontend][PriceIt-frontend-logo]][PriceIt-frontend-url]
+- [![PriceIt-search][PriceIt-search-logo]][PriceIt-search-url]
+- [![PriceIt-auth][PriceIt-auth-logo]][PriceIt-auth-url]
 
-[Zamanien](https://github.com/Zamanien)
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
 
+
+<!-- LICENSE -->
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">[<a href="#readme-top">back to top</a>]</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+
+[NodeJS-logo]: https://img.shields.io/badge/NodeJS-Runtime%20Environment-brightgreen
+[NodeJS-url]: https://nodejs.org/en/
+
+[Express-logo]: https://img.shields.io/badge/JS%20FrameworkExpress-Web%20Framework-blue
+[Express-url]: http://expressjs.com/
+
+[Typescript-logo]: https://img.shields.io/badge/Typescript-JS%20with%20Types-blue
+[Typescript-url]: https://www.typescriptlang.org/
+
+[MongoDB-logo]: https://img.shields.io/badge/MongoDB-NoSQL%20DB-Green
+[MongoDB-url]: https://www.mongodb.com/
+
+[Redis-logo]: https://img.shields.io/badge/Redis-Database-orange
+[Redis-url]: https://redis.io/
+
+[PriceIt-auth-logo]: https://img.shields.io/badge/PriceIt-Auth%20API-green
+[PriceIt-auth-url]: https://github.com/aaronalayo/priceit_auth
+
+[PriceIt-search-logo]: https://img.shields.io/badge/PriceIt-Search%20API-orange
+[PriceIt-search-url]: https://github.com/aaronalayo/priceit-backend
+
+[PriceIt-frontend-logo]: https://img.shields.io/badge/PriceIt-Frontend-blue
+[PriceIt-frontend-url]: https://github.com/aaronalayo/priceit_frontend
