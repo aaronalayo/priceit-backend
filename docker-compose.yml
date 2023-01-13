@@ -28,7 +28,7 @@ services:
     volumes:
       - mongo:/data/mongo
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - 27017:27017
 
   redis:
     image: redis
@@ -36,7 +36,7 @@ services:
     command: /bin/sh -c "redis-server --requirepass ${REDIS_PASSWORD}"
     env_file: ./.env
     ports:
-      - ${REDIS_PORT}:${REDIS_PORT}
+      - 6379:6379
     volumes:
       - redis:/data/redis
     restart: unless-stopped
