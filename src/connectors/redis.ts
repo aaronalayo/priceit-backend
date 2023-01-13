@@ -6,7 +6,7 @@ const redisClient = redis.createClient({
     host: config.redis.host,
     port: config.redis.port
   },
-  password: config.redis.password //Comment this out if you run locally
+  password: config.redis.password
 });
 
 (async () => {
