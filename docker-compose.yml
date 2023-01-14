@@ -3,7 +3,6 @@ version: '3.8'
 services:
   price_it_app:
     depends_on:
-      - mongo
       - redis
     build: .
     restart: unless-stopped
@@ -13,21 +12,7 @@ services:
     volumes:
       - .:/usr/src/price_it_app
       - /usr/src/app/node_modules
-    links:
-      - redis 
 
-  mongo:
-    image: mongo
-    container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    env_file:
-      - ./.env
-    volumes:
-      - mongo:/data/mongo
-    ports:
-      - 27017:27017
 
   redis:
     image: redis
