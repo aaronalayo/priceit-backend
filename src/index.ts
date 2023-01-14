@@ -9,14 +9,9 @@ dotenv.config();
 const app: Express = express();
 // app.use(cors); /* NEW */
 
-const allowedOrigins = ['http://localhost:5173'];
+app.use(cors({origin: ["http://localhost:5173", "https://priceit.herokuapp.com"]}));
 
 app.use(express.json());
-
-const options: cors.CorsOptions = {
-  origin: allowedOrigins,
-};
-app.use(cors(options));
 
 app.use(router);
 app.listen(config.server.local_port, () => {
