@@ -4,9 +4,9 @@
   "description": "Search engine for used and new products",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "nodemon src/index.ts  --max_old_space_size=2048",
     "build": "npm run lint && rimraf dist/ && tsc",
-    "start": "ts-node ./src/index.ts",
+    "start": "ts-node ./src/index.ts  --max_old_space_size=2048",
     "test": "jest --config=./jest.config.ts --rootDir=./src/",
     "lint": "eslint src/**/*.ts"
   },
