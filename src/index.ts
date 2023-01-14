@@ -9,7 +9,7 @@ dotenv.config();
 const app: Express = express();
 // app.use(cors); /* NEW */
 
-app.use(cors({origin: ["http://localhost:5173", "https://priceit.herokuapp.com"]}));
+app.use(cors({origin: ["http://localhost:5173", "https://priceit.herokuapp.com", "https://priceit.zamanien.com", "http://75.119.139.228:8080"]}));
 
 app.use(express.json());
 
