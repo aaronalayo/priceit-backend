@@ -8,7 +8,7 @@ describe("Data from Ebay Browser API", ()=>{
         expect(data?.offset).toEqual(0);
         expect(data?.itemList).toBeDefined()
         expect(Array.isArray(data?.itemList)).toBe(true)
-        expect(data?.itemList?.length).toHaveLength(10)
+        expect(data?.itemList?.length).toBe(10)
         expect(data).toBeDefined()
         expect(data?.itemList?.[0]).toMatchObject({title: expect.stringMatching(/samsung/i)})
         if(data?.itemList){
