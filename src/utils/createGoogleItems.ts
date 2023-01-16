@@ -13,7 +13,9 @@ export const createGoogleItems = async (data: any) => {
         title: item.title,
         price: {
           value: item.extracted_price,
-          currency: item.price.charAt(0),
+          currency: item.price.substring(
+            item.price.indexOf("k"), 
+            item.price.lastIndexOf("."))
         },
         image: {
           uri: item.thumbnail,
