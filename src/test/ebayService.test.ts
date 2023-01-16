@@ -1,4 +1,3 @@
-import { Item } from "../types/item.js"
 import {getEbayData} from "../services/ebayService.js"
 const searchWord = "samsung"
 const limit= 10
