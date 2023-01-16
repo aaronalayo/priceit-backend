@@ -1,5 +1,4 @@
 import { getGoogleData } from '../services/googleShopService.js';
-import { Item } from '../types/item.js';
 const searchWord = 'samsung';
 const start = 10;
 describe(' Data from Google Shop API', () => {
