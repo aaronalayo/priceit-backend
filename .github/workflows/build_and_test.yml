@@ -41,8 +41,8 @@ jobs:
     - name: Wait for containers to start
       run: sleep 20s
 
-#    - name: Run Unit Tests
-#      run: npm test
+    - name: Run Unit Tests
+      run: npm test
       
     - name: Stop containers and remove volumes
       run: docker-compose down -v
