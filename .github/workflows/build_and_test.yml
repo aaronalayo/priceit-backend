@@ -19,6 +19,10 @@ jobs:
       REDIS_HOST: ${{ secrets.REDIS_HOST}}
       REDIS_PORT: ${{ secrets.REDIS_PORT}}
       REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD}}
+      PROD_APP_ID: ${{ secrets.PROD_APP_ID }}
+      PROD_CLIENT_SECRET: ${{ secrets.PROD_CLIENT_SECRET }}
+      PROD_BASE_URL: ${{ secrets.PROD_BASE_URL }}
+      PROD_REDIRECT_URI: ${{secrets.PROD_REDIRECT_URI }}
 
     steps:
     - name: Check out repository code
@@ -41,8 +45,8 @@ jobs:
     - name: Wait for containers to start
       run: sleep 20s
 
-#    - name: Run Unit Tests
-#      run: npm test
+    - name: Run Unit Tests
+      run: npm test
       
     - name: Stop containers and remove volumes
       run: docker-compose down -v
