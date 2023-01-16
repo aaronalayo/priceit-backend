@@ -5,7 +5,7 @@ const offset = 0
 describe("Data from Ebay Browser API", ()=>{
     test("expect to get an object with itemList array and offset and item title to contain searchWord", async () => {
         const data = await getEbayData(searchWord, limit, offset)
-        expect(data?.offset).toBe(0);
+        expect(data?.offset).toEqual(0);
         expect(data?.itemList).toBeDefined()
         expect(Array.isArray(data?.itemList)).toBe(true)
         expect(data?.itemList?.length).toBe(10)

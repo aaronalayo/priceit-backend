@@ -32,8 +32,6 @@ export const getFacebookData = async (searchWord: string) => {
         error: string;
         itemList?: undefined;
     } | undefined = createFacebookItems(data);
-      console.log("facebook itemList", facebookData?.itemList)
-      console.log("facebook error", facebookData?.error)
       return facebookData;
     } else {
       console.log(response.statusText);
