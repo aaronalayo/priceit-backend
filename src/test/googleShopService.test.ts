@@ -7,13 +7,15 @@ describe(' Data from Google Shop API', () => {
     const data = await getGoogleData(searchWord, start);
     expect(data).toBeDefined();
     expect(Array.isArray(data?.itemList)).toBe(true)
-    expect(data?.itemList[0]).toMatchObject({title: expect.stringMatching(/samsung/i)})
-    // data?.itemList.map((item, index) =>{
-    //     const  ...remaining} = data.itemList[index]
-    //     expect(item).toMatchObject({
-    //         ...remaining,
-    //         title: expect.stringMatching(/iphone/i)
-    //     })
-    // })
+    expect(data?.itemList?.[0]).toMatchObject({title: expect.stringMatching(/samsung/i)})
+    if(data?.itemList){
+      data?.itemList?.map((item, index) =>{
+          const { ...remaining} = data.itemList?.[index] || undefined
+          expect(item).toMatchObject({
+              ...remaining,
+              title:expect.stringMatching(/samsung/i)
+          })
+      })
+  }
   });
 });
